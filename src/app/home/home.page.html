@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ sesionIniciada ? 'Mi primera APP 22220108' : 'Iniciar Sesión' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <!-- VISTA DE LOGIN (Se muestra si NO ha iniciado sesión) -->
+  <div *ngIf="!sesionIniciada" class="login-container">
+    <ion-item class="ion-margin-bottom">
+      <ion-input
+        label="IP del Servidor"
+        labelPlacement="floating"
+        type="text"
+        placeholder="Ej. 192.168.1.75"
+        [(ngModel)]="ipServidor">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input
+        label="Correo"
+        labelPlacement="floating"
+        type="email"
+        [(ngModel)]="usuario.correo">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input
+        label="Contraseña"
+        labelPlacement="floating"
+        type="password"
+        [(ngModel)]="usuario.contra">
+      </ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="ion-margin-top" (click)="login()">
+      Entrar
+    </ion-button>
+  </div>
+
+  <!-- VISTA PRINCIPAL (Se muestra AL INICIAR SESIÓN con tus botones originales) -->
+  <div *ngIf="sesionIniciada">
+    <h2>Hola Mundo</h2>
+    <p>Tomé clases de inglés en verano y estuve trabajando</p>
+
+    <div class="ion-margin-top">
+      <ion-button routerLink="/detalle" class="ion-margin-end">IR A DETALLE</ion-button>
+      <ion-button routerLink="/registro" class="ion-margin-end">IR A REGISTRO</ion-button>
+      <ion-button routerLink="/gestion-alumnos" class="ion-margin-end">GESTIÓN DE ALUMNOS</ion-button>
+      <ion-button routerLink="/gestion-carreras">GESTIÓN DE CARRERAS</ion-button>
+    </div>
+
+    <!-- Botón adicional para cerrar sesión si lo deseas -->
+    <ion-button expand="block" color="danger" class="ion-margin-top" (click)="cerrarSesion()">
+      Cerrar Sesión
+    </ion-button>
+  </div>
+
+</ion-content>

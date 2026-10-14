@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Gestión de Carrera</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+
+    <!-- Nombre de la Carrera -->
+    <ion-item>
+      <ion-input 
+        label="Nombre de la Carrera : *" 
+        labelPlacement="stacked" 
+        [(ngModel)]="carrera.nombre" 
+        type="text"
+        placeholder="Ej. Ingeniería en Tecnologías de la Información">
+      </ion-input>
+    </ion-item>
+
+    <!-- Tipo de Carrera -->
+    <ion-item>
+      <ion-select 
+        label="Tipo : *" 
+        labelPlacement="stacked" 
+        [(ngModel)]="carrera.tipo" 
+        interface="popover"
+        placeholder="Selecciona tipo">
+        <ion-select-option value="Licenciatura">Licenciatura</ion-select-option>
+        <ion-select-option value="Ingeniería">Ingeniería</ion-select-option>
+        <ion-select-option value="Maestría">Maestría</ion-select-option>
+        <ion-select-option value="Doctorado">Doctorado</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-button expand="block" (click)="guardarCarrera()">GUARDAR CARRERA</ion-button>
+</ion-content>

@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Gestión de alumnos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+
+    <!-- Número de control -->
+    <ion-item>
+      <ion-input label="Número de Control : *" labelPlacement="stacked" [(ngModel)]="alumno.n_control" type="text">
+      </ion-input>
+    </ion-item>
+
+    <!-- Primer Nombre -->
+    <ion-item>
+      <ion-input label="Nombre : *" labelPlacement="stacked" [(ngModel)]="alumno.nombre" type="text">
+      </ion-input>
+    </ion-item>
+
+    <!-- Segundo Nombre (snombre - Opcional) -->
+    <ion-item>
+      <ion-input label="Segundo Nombre :" labelPlacement="stacked" [(ngModel)]="alumno.snombre" type="text">
+      </ion-input>
+    </ion-item>
+
+    <!-- Apellido Paterno -->
+    <ion-item>
+      <ion-input label="Apellido Paterno : *" labelPlacement="stacked" [(ngModel)]="alumno.apat" type="text">
+      </ion-input>
+    </ion-item>
+
+    <!-- Apellido Materno -->
+    <ion-item>
+      <ion-input label="Apellido Materno : *" labelPlacement="stacked" [(ngModel)]="alumno.amat" type="text">
+      </ion-input>
+    </ion-item>
+
+    <!-- Fecha de nacimiento -->
+    <ion-item>
+      <ion-input label="Fecha de nacimiento : *" labelPlacement="stacked" [(ngModel)]="alumno.fecha_nac" type="date">
+      </ion-input>
+    </ion-item>
+
+    <!-- Género -->
+    <ion-item>
+      <ion-select label="Género : *" labelPlacement="stacked" [(ngModel)]="alumno.genero" interface="popover" placeholder="Selecciona género">
+        <ion-select-option value="H">Hombre</ion-select-option>
+        <ion-select-option value="M">Mujer</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Carrera -->
+    <ion-item>
+      <ion-select label="Carrera : *" labelPlacement="stacked" [(ngModel)]="alumno.fk_caralu" placeholder="Selecciona una carrera">
+        @for (carrera of listaCarreras; track carrera.id) {
+          <ion-select-option [value]="carrera.id">
+            {{ carrera.nombre }}
+          </ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-button expand="block" (click)="guardarAlumno()">GUARDAR</ion-button>
+</ion-content>
